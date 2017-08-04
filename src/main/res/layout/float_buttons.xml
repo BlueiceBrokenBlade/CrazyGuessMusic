@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        >
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/game_level_title" />
+
+        <TextView
+            android:id="@+id/text_current_stage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:text="1"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_delet_word"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/delete_button_selector"/>
+
+            <ImageView
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="7dp"
+                android:layout_gravity="bottom"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/game_coin_icon"/>
+
+            <TextView
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@integer/pay_delete_word"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_tip_answer"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/tip_button_selector"/>
+
+            <ImageView
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="7dp"
+                android:layout_gravity="bottom"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/game_coin_icon"/>
+
+            <TextView
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@integer/pay_tip_answer"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_share"
+        android:background="@drawable/share_button_selector"
+        android:layout_marginTop="250dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+</RelativeLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/index_background">
+
+    <include layout="@layout/top_bar"/>
+
+    <LinearLayout
+        android:background="@drawable/allpass_back0"
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:src="@drawable/allpass_text0"
+            android:layout_width="288dp"
+            android:layout_height="44dp"
+            android:id="@+id/imageView4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:background="@drawable/about_rank_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:background="@drawable/game_coin_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/allpass_back1"
+        android:layout_width="wrap_content"
+        android:layout_height="151dp"
+        android:gravity="center"
+        android:weightSum="1">
+
+        <ImageButton
+            android:background="@drawable/allpass_weichat_button_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:background="@drawable/game_wx_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:background="@drawable/game_coin_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:background="@drawable/allpass_back1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/allpass_text2"
+            android:layout_width="305dp"
+            android:layout_height="145dp" />
+
+        <ImageButton
+            android:background="@drawable/allpass_rank_selector"
+            android:layout_gravity="bottom|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton" />
+
+
+    </FrameLayout>
+
+
+</LinearLayout>
