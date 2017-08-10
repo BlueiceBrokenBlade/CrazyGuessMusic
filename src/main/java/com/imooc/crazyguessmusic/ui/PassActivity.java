@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import com.imooc.crazyguessmusic.R;
 
-import util.Util;
+import com.imooc.crazyguessmusic.util.Util;
 
 public class PassActivity extends Activity {
     FrameLayout frameLayout;

@@ -110,7 +110,7 @@
         android:layout_marginTop="20dp"/>
 
     <ImageButton
-        android:id="@+id/btn_share"
+        android:id="@+id/btn_share_rightAnswer"
         android:background="@drawable/weixin_button_selector"
         android:layout_width="223dp"
         android:layout_height="74dp" />

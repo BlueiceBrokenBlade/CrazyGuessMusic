@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/game_line" />
 
-    <myview.MyGirdView
+    <com.imooc.crazyguessmusic.myview.MyGirdView
         android:id="@+id/girdview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +34,6 @@
         android:paddingRight="2dp"
         android:verticalSpacing="2dp" >
 
-    </myview.MyGirdView>
+    </com.imooc.crazyguessmusic.myview.MyGirdView>
 
 </LinearLayout>

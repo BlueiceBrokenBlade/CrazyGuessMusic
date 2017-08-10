@@ -3,15 +3,13 @@ package com.imooc.crazyguessmusic.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.imooc.crazyguessmusic.R;
 
-import data.Const;
-import util.Util;
+import com.imooc.crazyguessmusic.data.Const;
+import com.imooc.crazyguessmusic.util.Util;
 
 public class FirstActivity extends Activity {
     private ImageButton btn_start;

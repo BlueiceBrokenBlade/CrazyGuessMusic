@@ -1,7 +1,7 @@
 package com.imooc.crazyguessmusic.ui;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -14,25 +14,27 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.imooc.crazyguessmusic.R;
-
-import org.w3c.dom.Text;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
+import com.tencent.mm.opensdk.modelmsg.WXImageObject;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import data.Const;
-import model.IAlterDialogButtonListener;
-import model.IWordButtonClickListener;
-import model.Song;
-import model.WordButton;
-import myview.MyGirdView;
-import util.MyPlayer;
-import util.Util;
+import com.imooc.crazyguessmusic.data.Const;
+import com.imooc.crazyguessmusic.model.IAlterDialogButtonListener;
+import com.imooc.crazyguessmusic.model.IWordButtonClickListener;
+import com.imooc.crazyguessmusic.model.Song;
+import com.imooc.crazyguessmusic.model.WordButton;
+import com.imooc.crazyguessmusic.myview.MyGirdView;
+import com.imooc.crazyguessmusic.util.MyPlayer;
+import com.imooc.crazyguessmusic.util.Util;
 
 public class MainActivity extends Activity implements IWordButtonClickListener{
     //唱片相关动画
@@ -106,10 +108,20 @@ public class MainActivity extends Activity implements IWordButtonClickListener{
     public static final int ID_DIALOG_TIP_WORD = 2;
     public static final int ID_DIALOG_LACK_COINS = 3;
 
+    //第三方app和微信通信的openapi接口
+    private IWXAPI api;
+    //分享到朋友圈
+    private int mTargetScene = SendMessageToWX.Req.WXSceneTimeline;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //接口实例
+        api = WXAPIFactory.createWXAPI(this, Const.APP_ID, true);
+        //将应用appId注册到微信
+        api.registerApp(Const.APP_ID);
 
         //读取关卡数据
         int[] datas = Util.loadData(MainActivity.this);
@@ -513,11 +525,12 @@ public class MainActivity extends Activity implements IWordButtonClickListener{
         });
 
         //"分享到微信"按钮事件
-        ImageButton btn_share_weixin = (ImageButton) findViewById(R.id.btn_share);
+        ImageButton btn_share_weixin = (ImageButton) findViewById(R.id.btn_share_rightAnswer);
         btn_share_weixin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//                Toast.makeText(MainActivity.this,"点击了分享",Toast.LENGTH_LONG).show();
+                shareTowechar();
             }
         });
     }
@@ -746,6 +759,32 @@ public class MainActivity extends Activity implements IWordButtonClickListener{
         int[] datas = Util.loadData(MainActivity.this);
         mCurrentStageIndex = datas[Const.INDEX_LOAD_DATA_STAGE];
         mCurrentCoins = datas[Const.INDEX_LOAD_DATA_COINS];
+    }
+
+    /**
+     * 将过关界面分享到朋友圈
+     */
+    private void shareTowechar(){
+        WXImageObject imgObj = new WXImageObject(generateSpringCard());
+        WXMediaMessage msg = new WXMediaMessage();
+        msg.mediaObject = imgObj;
+
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = String.valueOf(System.currentTimeMillis());
+        req.message = msg;
+        req.scene = SendMessageToWX.Req.WXSceneTimeline;
+        api.sendReq(req);
+    }
+
+    /**
+     * 过关界面截图
+     * @return
+     */
+    private Bitmap generateSpringCard(){
+        View view = getWindow().getDecorView();
+        view.setDrawingCacheEnabled(true);
+        view.buildDrawingCache();
+        return view.getDrawingCache();
     }
 
 }
